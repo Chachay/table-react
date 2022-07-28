@@ -15,28 +15,24 @@ function ItemView(prop) {
   if(!post) return 'nopost';
 
   return (
-    <div>
+    <div className="row">
       <div
-        className="row"
+        className="col-12"
       >
         <h1 className="h2">{post.title}</h1>
       </div>
       <div
-        className="row"
+        className="col-4"
       >
-        <div
-          className="col-4"
-        >
-          {post.id}
-        </div>
-        <div
-          className="col-8"
-        >
-          {post.date}
-        </div>
+        {post.id}
       </div>
       <div
-        className="row"
+        className="col-8"
+      >
+        {post.date}
+      </div>
+      <div
+        className="col-12"
       >
         <ReactMarkdown
           components={{
@@ -47,15 +43,11 @@ function ItemView(prop) {
         </ReactMarkdown>
       </div>
       <div
-        className="row"
+        className="col-12"
       >
-        <div
-          className="col-12"
-        >
-          <Link to={`${prop.API.basePath}/edit/${entryId}`}>
-            Edit
-          </Link>
-        </div>
+        <Link to={`${prop.API.basePath}/edit/${entryId}`}>
+          Edit
+        </Link>
       </div>
     </div>
   );
