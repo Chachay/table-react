@@ -23,7 +23,7 @@ function ListView(prop) {
             >
               <div className="col-1">{v.id}</div>
               <div className="col-8">
-                <Link to={`${prop.API.basePath}/item/${v.id}`}>
+                <Link to={`item/${v.id}`}>
                   {v.title}
                 </Link>
               </div>

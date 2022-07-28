@@ -17,9 +17,16 @@ function ItemView(prop) {
   return (
     <div className="row">
       <div
-        className="col-12"
+        className="col-11"
       >
         <h1 className="h2">{post.title}</h1>
+      </div>
+      <div
+        className="col-1"
+      >
+        <Link to={`/edit/${entryId}`}>
+          Edit
+        </Link>
       </div>
       <div
         className="col-4"
@@ -41,13 +48,6 @@ function ItemView(prop) {
         >
           {post.body}
         </ReactMarkdown>
-      </div>
-      <div
-        className="col-12"
-      >
-        <Link to={`${prop.API.basePath}/edit/${entryId}`}>
-          Edit
-        </Link>
       </div>
     </div>
   );

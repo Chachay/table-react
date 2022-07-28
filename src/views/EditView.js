@@ -48,7 +48,7 @@ function EditView(prop) {
         .then((response) => {
           setPost(prop.API.translateItemDetail(response.data));
           setLoading(false);
-          navigate(`${prop.API.basePath}/item/${post.id}`);
+          navigate(`/item/${post.id}`);
         });
     } else{
       prop.API.postItem(data)
@@ -56,7 +56,7 @@ function EditView(prop) {
           setPost(prop.API.translateItemDetail(response.data));
           const post = prop.API.translateItemDetail(response.data)
           setLoading(false);
-          navigate(`${prop.API.basePath}/item/${post.id}`);
+          navigate(`/item/${post.id}`);
         });
     }
   }

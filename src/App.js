@@ -1,5 +1,6 @@
 import {
-  BrowserRouter,
+  //BrowserRouter,
+  HashRouter,
   Routes,
   Route,
   Link,
@@ -18,14 +19,14 @@ import { sharepoint } from './util';
 function App() {
   return (
     <div className="container h-100">
-      <BrowserRouter>
+      <HashRouter>
         <header>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-              <Link className="navbar-brand" to={`${sharepoint.basePath}`}>Navbar</Link>
+              <Link className="navbar-brand" to="/">Navbar</Link>
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link className="nav-link" to={`${sharepoint.basePath}/edit`}>Post</Link>
+                  <Link className="nav-link" to="/edit">Post</Link>
                 </li>
               </ul>
             </div>
@@ -33,14 +34,13 @@ function App() {
         </header>
         <main className="h-75">
             <Routes>
-              <Route path={`${sharepoint.basePath}`} element={<ListView API={sharepoint} />} />
-              <Route path={`${sharepoint.basePath}/index.aspx`} element={<ListView API={sharepoint} />} />
-              <Route path={`${sharepoint.basePath}/item/:entryId`} element={<ItemView API={sharepoint} />} />
-              <Route path={`${sharepoint.basePath}/edit`} element={<EditView API={sharepoint} />} />
-              <Route path={`${sharepoint.basePath}/edit/:entryId`} element={<EditView API={sharepoint} />} />
+              <Route index element={<ListView API={sharepoint} />} />
+              <Route path="/item/:entryId" element={<ItemView API={sharepoint} />} />
+              <Route path="/edit" element={<EditView API={sharepoint} />} />
+              <Route path="/edit/:entryId" element={<EditView API={sharepoint} />} />
             </Routes>
         </main>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
