@@ -1,14 +1,17 @@
 import axios from "axios"
 
 export const sharepoint = {
-	basePath: "/sites/list/Shared%20Documents",
-	EndPoint: `https://${process.env.REACT_APP_SHAREPOINT_SUBDOMAIN}.sharepoint.com/sites/list`,
-	ContextInfo: `https://${process.env.REACT_APP_SHAREPOINT_SUBDOMAIN}.sharepoint.com/sites/list/_api/contextinfo`,
-	listName: "mocklist",
-	ListItemEntityTypeFullName: "SP.Data.MocklistListItem",
+	EndPoint: `https://${process.env.REACT_APP_SHAREPOINT_SUBDOMAIN}.sharepoint.com/sites`,
+	siteName: process.env.REACT_APP_SHAREPOINT_SITENAME,
+	listName: process.env.REACT_APP_SHAREPOINT_LISTNAME,
+	ListItemEntityTypeFullName: process.env.REACT_APP_SHAREPOINT_LISTFULLNAME,
 
 	getListURI: function(){
-		return `${this.EndPoint}/_api/web/lists/getByTitle('${this.listName}')/items`;
+		return `${this.EndPoint}/${this.siteName}/_api/web/lists/getByTitle('${this.listName}')/items`;
+	},
+
+	getContextInfoURI: function(){
+		return`${this.EndPoint}/${this.siteName}/_api/contextinfo`;
 	},
 
 	getItemURI: function(entryId){
@@ -24,7 +27,7 @@ export const sharepoint = {
 	},
 
 	putItem: async function(entryId, data){
-		return axios.post(`${this.ContextInfo}`, {})
+		return axios.post(this.getContextInfoURI(), {})
 			.then(response => {
 				return axios.post(
 					this.getItemURI(entryId),
