@@ -1,6 +1,6 @@
 import React from "react";
 import {useParams, Link} from 'react-router-dom';
-import ReactMarkdown from 'react-markdown'
+import FormatContent from "../utils/FormatContent";
 
 function ItemView(prop) {
   let { entryId } = useParams();
@@ -46,13 +46,9 @@ function ItemView(prop) {
         <div
           className="col-12"
         >
-          <ReactMarkdown
-            components={{
-              h1: 'h2', h2: 'h3', h3: 'h4', h4: 'h5'
-            }}
-          >
-            {post.body}
-          </ReactMarkdown>
+          <FormatContent>
+            {prop.children}
+          </FormatContent>
         </div>
       </div>
     </div>

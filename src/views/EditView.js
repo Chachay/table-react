@@ -1,6 +1,6 @@
 import React from "react";
 import {useParams, useNavigate} from 'react-router-dom';
-import ReactMarkdown from 'react-markdown'
+import FormatContent from "../utils/FormatContent";
 
 function EditView(prop) {
   const {entryId} = useParams();
@@ -97,13 +97,9 @@ function EditView(prop) {
            />
         </div>
         <div className="col-6 preview">
-          <ReactMarkdown
-            components={{
-              h1: 'h2', h2: 'h3', h3: 'h4', h4: 'h5'
-            }}
-          >
+          <FormatContent>
             {post.body}
-          </ReactMarkdown>
+          </FormatContent>
         </div>
       </div>
     </form>

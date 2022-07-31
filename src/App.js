@@ -14,7 +14,7 @@ import ListView from './views/ListView';
 import ItemView from './views/ItemView';
 import EditView from './views/EditView';
 
-import { sharepoint } from './util';
+import { sharepoint } from './utils/util';
 
 function App() {
   return (
