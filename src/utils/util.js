@@ -45,7 +45,7 @@ export const sharepoint = {
 	},
 
 	postItem: async function(data){
-		return axios.post(`${this.ContextInfo}`, {})
+		return axios.post(this.getContextInfoURI(), {})
 			.then(response => {
 				return axios.post(
 					this.getListURI(),

@@ -47,7 +47,7 @@ function ItemView(prop) {
           className="col-12"
         >
           <FormatContent>
-            {prop.children}
+            {post.body}
           </FormatContent>
         </div>
       </div>
