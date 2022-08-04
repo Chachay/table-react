@@ -27,7 +27,7 @@ function ListView(prop) {
                   {v.title}
                 </Link>
               </div>
-              <div className="col-3">{v.date}</div>
+              <div className="col-3">{v.dateLocale}</div>
             </div>
           );
         })

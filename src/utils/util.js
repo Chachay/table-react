@@ -70,11 +70,13 @@ export const sharepoint = {
 	},
 
 	translateItemDetail: function(data){
+		const DateString = (new Date(data.date)).toLocaleDateString("en-CA");
 		return {
 			id: data.Id,
 			title: (data.Title === "" || !data.Title)? "(non-title)" : data.Title,
 			body: data.body,
-			date: data.date
+			date: data.date,
+			dateLocale: DateString
 		};
 	},
 

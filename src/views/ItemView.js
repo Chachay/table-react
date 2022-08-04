@@ -27,7 +27,7 @@ function ItemView(prop) {
         <div
           className="col-8 gray"
         >
-          {post.date}
+          {post.dateLocale}
         </div>
         <div
           className="col-1"
