@@ -8,6 +8,8 @@ import {
   // useLocation
 } from 'react-router-dom';
 
+import React from "react";
+
 import './App.css';
 
 import ListView from './views/ListView';
@@ -15,8 +17,19 @@ import ItemView from './views/ItemView';
 import EditView from './views/EditView';
 
 import { sharepoint } from './utils/util';
+import { dummy } from './utils/util';
 
 function App() {
+  const [host, setHost] = React.useState(window.location.host);
+  let myAPI;
+  console.log(host)
+
+  if (host === 'localhost:3000'){
+    myAPI = dummy;
+  } else {
+    myAPI = sharepoint;
+  }
+
   return (
     <div className="container h-100">
       <HashRouter>
@@ -34,10 +47,10 @@ function App() {
         </header>
         <main className="h-75">
             <Routes>
-              <Route index element={<ListView API={sharepoint} />} />
-              <Route path="/item/:entryId" element={<ItemView API={sharepoint} />} />
-              <Route path="/edit" element={<EditView API={sharepoint} />} />
-              <Route path="/edit/:entryId" element={<EditView API={sharepoint} />} />
+              <Route index element={<ListView API={myAPI} />} />
+              <Route path="/item/:entryId" element={<ItemView API={myAPI} />} />
+              <Route path="/edit" element={<EditView API={myAPI} />} />
+              <Route path="/edit/:entryId" element={<EditView API={myAPI} />} />
             </Routes>
         </main>
       </HashRouter>
